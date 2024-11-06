@@ -2,12 +2,13 @@ import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { lusitana } from '@/app/ui/fonts';
-import { LatestInvoice } from '@/app/lib/definitions';
-export default async function LatestInvoices({
-  latestInvoices,
-}: {
-  latestInvoices: LatestInvoice[];
-}) {
+import { fetchLatestInvoices } from '@/app/lib/data';
+export default async function LatestInvoices() {
+  // Simulate a 1 second delay to fetch invoice data, to see streaming affect on dashboard
+  console.log('Fetching revenue data...');
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const latestInvoices = await fetchLatestInvoices();
+  console.log('Data fetch completed after 1 seconds.');
   return (
     <div className="flex w-full flex-col md:col-span-4">
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
