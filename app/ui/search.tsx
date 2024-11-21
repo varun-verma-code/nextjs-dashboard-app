@@ -19,6 +19,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     console.log(term);
     // URLSearchParams used for advanced handling. Since useSearchParams returns a readonly object
     const params = new URLSearchParams(searchParams);
+    params.set('page', '1');
     if (term) {
       params.set('query', term);
     } else {
